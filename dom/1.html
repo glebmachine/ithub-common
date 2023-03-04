@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        const numbers = new Array(33).fill(0).map(() => Math.round(Math.random() * 99));
+
+        const table = document.createElement('table');
+        const perRow = 6;
+        let i = 0;
+
+        let row;
+        let col;
+        let item;
+
+        while (numbers.length) {
+            console.log(numbers.length, numbers.length % perRow);
+            if (i % perRow === 0) {
+                row = document.createElement('tr');
+                table.append(row);
+            }
+
+            i++;
+            item = numbers.shift()
+
+            col = document.createElement('td');
+            col.innerText = item;
+            if (item > 50) {
+                col.style.backgroundColor = 'orange';
+            }
+            row.append(col);
+        }
+
+        document.body.append(table);
+
+    </script>
+</body>
+
+</html>

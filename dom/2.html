@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        const numbers = new Array(30).fill(0).map(() => Math.round(Math.random() * 99));
+        let table;
+
+        function generateTable() {
+            table = document.createElement('table');
+            const perRow = 6;
+            let i = 0;
+
+            let row;
+            let col;
+            let item;
+
+            while (i < numbers.length) {
+                if (i % perRow === 0) {
+                    row = document.createElement('tr');
+                    table.append(row);
+                }
+
+                item = numbers[i];
+                i++;
+
+                col = document.createElement('td');
+                col.innerText = item;
+                if (item > 50) {
+                    col.style.backgroundColor = 'orange';
+                }
+                row.append(col);
+            }
+
+            document.body.prepend(table);
+        }
+
+        function foo() {
+            document.body.removeChild(table);
+            numbers.push(Math.round(Math.random() * 99));
+            generateTable();
+        }
+
+        generateTable();
+
+    </script>
+    </br>
+    <button onclick="foo()">Добавить число</button>
+</body>
+
+</html>
